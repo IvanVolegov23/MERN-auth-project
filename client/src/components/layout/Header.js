@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header id="header">
       <Link to="/">
-        <h1 className="title">CLOUD BET BOT</h1>
+        <h1 className="title">Dutching King Bot</h1>
       </Link>
       <AuthOptions />
     </header>
