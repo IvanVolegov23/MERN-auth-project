@@ -64,11 +64,12 @@ export default function Login() {
         user: loginRes.data.user,
       });
       localStorage.setItem("auth-token", loginRes.data.token);
-      history.push("/profile");
+      history.push("/");
     } catch (err) {
       addToast(err.response.data.msg, {
         appearance: 'error',
         autoDismiss: true,
+        marginTop: "30px"
       })
       // err.response.data.msg && setError(err.response.data.msg);
     }

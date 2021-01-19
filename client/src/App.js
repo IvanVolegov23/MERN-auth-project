@@ -6,7 +6,6 @@ import Home from "./components/pages/Home";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import UserContext from "./context/UserContext";
-import Account from "./components/profile/index"
 import { ToastProvider } from 'react-toast-notifications';
 import "./style.css";
 
@@ -46,7 +45,6 @@ export default function App() {
     };
 
     checkLoggedIn();
-    // console.log(userData)
   }, []);
 
   return (
@@ -60,7 +58,6 @@ export default function App() {
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
-              <Route path="/profile" component={Account} />
             </Switch>
           </div>
           </ToastProvider>

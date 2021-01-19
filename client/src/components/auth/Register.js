@@ -71,6 +71,7 @@ export default function Register() {
 
     try {
       const newUser = { email, password, passwordCheck, firstName, lastName };
+      console.log(newUser)
       await Axios.post("http://localhost:5000/users/register", newUser);
       const loginRes = await Axios.post("http://localhost:5000/users/login", {
         email,
@@ -81,11 +82,12 @@ export default function Register() {
         user: loginRes.data.user,
       });
       localStorage.setItem("auth-token", loginRes.data.token);
-      history.push("/profile");
+      history.push("/");
     } catch (err) {
       addToast(err.response.data.msg, {
         appearance: 'error',
         autoDismiss: true,
+        marginTop: "30px"
       })
       // err.response.data.msg && setError(err.response.data.msg);
     }
