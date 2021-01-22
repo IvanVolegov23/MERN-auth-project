@@ -13,32 +13,26 @@ import {
 } from '@material-ui/core';
 import useStyles from './styles'
 
-export default function Home() {
+export default function Profile() {
   const classes = useStyles();
 
   const [country, setCountry] = useState('UK');
+  const [email, setEmail] = useState('');
+  const [displayname, setDisplayname] = useState('')
 
   useEffect(() => {
 
     const profileRead = async () => {
       let token = localStorage.getItem("auth-token");
-      console.log(token)
-      await Axios.get("http://localhost:5000/profile/read",
-        null,
+      const users = await Axios.get("http://localhost:5000/profile/read",
         { headers: { "x-auth-token": token } }
       );
+      setEmail(users.data.email);
+      setDisplayname(users.data.displayName);
     }
-    console.log(country)
-    // const loginRes = await Axios.post("http://localhost:5000/users/login", {
-    //   email,
-    //   password,
-    // });
-    // setUserData({
-    //   token: loginRes.data.token,
-    //   user: loginRes.data.user,
-    // });
+
     profileRead()
-  }, []);
+  }, [email]);
 
   return (
     <div className={classes.root}>
@@ -118,7 +112,7 @@ export default function Home() {
                 id="outlined-email" 
                 label="Email Address* (cannot be changed)" 
                 variant="outlined" 
-                value="aaronscane@gmail.com" 
+                value={email}
                 disabled size="small" 
                 style={{marginTop: '20px'}} 
               />
@@ -142,9 +136,10 @@ export default function Home() {
                 id="outlined-displayname" 
                 label="Display Name*" 
                 variant="outlined" 
-                value="Aaron" 
+                value={displayname} 
                 size="small" 
-                style={{marginTop: '20px'}} 
+                style={{marginTop: '20px'}}
+                onChange={(e) => setDisplayname(e.target.value)} 
               />
               <FormControl variant="outlined" className={classes.formControl} size="small" style={{marginTop: '20px'}}>
                 <InputLabel htmlFor="outlined-age-native-simple">Country*</InputLabel>

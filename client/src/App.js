@@ -6,6 +6,12 @@ import Home from "./components/pages/Home";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import UserContext from "./context/UserContext";
+import Profile from "./components/profile/index";
+import TableCard from "./components/tablecard/index";
+// delete
+import Bearone from "./components/bearone/index";
+import Beartwo from "./components/beartwo/index";
+// end
 import { ToastProvider } from 'react-toast-notifications';
 import "./style.css";
 
@@ -53,13 +59,19 @@ export default function App() {
         <UserContext.Provider value={{ userData, setUserData }}>
           <Header />
           <ToastProvider>
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-            </Switch>
-          </div>
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
+                <Route path="/profile" component={Profile} />
+                <Route path="/tablecard" component={TableCard} />
+                // delete
+                <Route path="/bearone" component={Bearone} />
+                <Route path="/beartwo" component={Beartwo} />
+                // end
+              </Switch>
+            </div>
           </ToastProvider>
         </UserContext.Provider>
       </BrowserRouter>
